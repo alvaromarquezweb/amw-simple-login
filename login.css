@@ -1,0 +1,342 @@
+/* ─────────────────────────────────────────
+   AMW Custom Login — v1.0.0
+   alvaromarquezweb.com
+
+   FUENTES: system-ui, sin carga externa.
+   El navegador usa la fuente del sistema operativo
+   (San Francisco en macOS/iOS, Segoe UI en Windows,
+   Roboto en Android/Chrome OS).
+
+   COLORES: todas las variables se inyectan desde PHP
+   (amw_login_dynamic_styles). Los valores de :root son
+   únicamente fallback de seguridad.
+
+   Los tonos derivados (foco, errores, degradado de fondo)
+   se calculan con color-mix a partir de --amw-text, para que
+   la pantalla funcione igual con paleta clara u oscura.
+   Cada regla lleva antes una declaración simple como reserva
+   para navegadores sin soporte de color-mix.
+───────────────────────────────────────── */
+
+/* ── Variables (fallback: se sobreescriben desde PHP) ── */
+:root {
+    --amw-bg:           #0a0a0a;
+    --amw-surface:      #141414;
+    --amw-surface-alt:  #1c1c1c;
+    --amw-input-bg:     #1c1c1c;
+    --amw-border:       #2a2a2a;
+    --amw-text:         #fafafa;
+    --amw-text-muted:   #888888;
+    --amw-accent:       #fafafa;
+    --amw-accent-fg:    #0a0a0a;
+    --amw-error:        #c0392b;
+    --amw-radius:       8px;
+    /* Radio de campos y botón: se deriva del principal y se topa en 10px,
+       para que con radios grandes la caja no acabe llena de píldoras. */
+    --amw-radius-field: min(var(--amw-radius), 10px);
+    --amw-logo-width:   160px;
+    --amw-logo-height:  60px;
+    --amw-font:         system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+/* ── Reset base ── */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* ── Página ── */
+html {
+    height: 100%;
+}
+
+body.login {
+    height: 100%;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    background-color: var(--amw-bg);
+    background-image: radial-gradient(
+        ellipse 60% 40% at 50% 0%,
+        color-mix(in srgb, var(--amw-text) 4%, transparent) 0%,
+        transparent 70%
+    );
+    font-family: var(--amw-font);
+    position: relative;
+}
+
+/* ── Contenedor principal, centrado con transform ── */
+body.login #login {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 340px;
+    max-width: calc(100vw - 32px);
+    padding: 0;
+}
+
+body.login #login > * {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ── Logo ──
+   Sustitución de imagen por el método "Phark": el texto sigue
+   presente en el árbol de accesibilidad (los lectores de pantalla
+   leen el nombre del sitio) pero no se ve. */
+.login h1 {
+    text-align: center;
+    margin: 0 0 8px;
+    padding: 0;
+    line-height: 0;
+}
+
+.login h1 a {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: var(--amw-logo-width);
+    height: var(--amw-logo-height);
+    display: block;
+    margin: 0 auto;
+    outline-offset: 4px;
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+/* Oculta el "Acceder" / título de página que WP pinta fuera del #login */
+.login #login_header,
+.login .login-header,
+body.login > h1:first-of-type {
+    display: none !important;
+}
+
+/* ── Caja del formulario ── */
+#loginform,
+#lostpasswordform,
+#registerform {
+    background: var(--amw-surface);
+    border: 1px solid var(--amw-border);
+    border-radius: var(--amw-radius);
+    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.35);
+    padding: 32px 36px;
+    margin-top: 16px;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+/* ── Labels ── */
+.login label {
+    color: var(--amw-text-muted);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 4px;
+}
+
+/* ── Inputs ── */
+.login input[type="text"],
+.login input[type="password"],
+.login input[type="email"] {
+    background-color: var(--amw-input-bg) !important;
+    border: 1px solid var(--amw-border) !important;
+    border-radius: var(--amw-radius-field) !important;
+    color: var(--amw-text) !important;
+    font-family: var(--amw-font);
+    font-size: 14px;
+    padding: 10px 14px;
+    box-shadow: none !important;
+    transition: border-color 0.2s ease;
+    width: 100%;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.login input[type="text"]:focus,
+.login input[type="password"]:focus,
+.login input[type="email"]:focus {
+    border-color: var(--amw-text-muted) !important;
+    border-color: color-mix(in srgb, var(--amw-text) 40%, var(--amw-border)) !important;
+    outline: none;
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--amw-text) 8%, transparent) !important;
+}
+
+/* ── Checkbox "Recordarme" ── */
+.login .forgetmenot {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+}
+
+.login .forgetmenot label {
+    color: var(--amw-text-muted);
+    font-size: 12px;
+    letter-spacing: normal;
+    text-transform: none;
+    font-weight: 400;
+    margin-bottom: 0;
+}
+
+.login input[type="checkbox"] {
+    -webkit-appearance: checkbox;
+    appearance: checkbox;
+    accent-color: var(--amw-accent);
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+}
+
+/* ── Botón principal ── */
+.login .button-primary,
+.login #wp-submit {
+    background: var(--amw-accent) !important;
+    border: none !important;
+    border-radius: var(--amw-radius-field) !important;
+    color: var(--amw-accent-fg) !important;
+    font-family: var(--amw-font);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 11px 0;
+    width: 100%;
+    cursor: pointer;
+    box-shadow: none !important;
+    transition: opacity 0.2s ease, transform 0.1s ease;
+    display: block;
+}
+
+.login .button-primary:hover,
+.login #wp-submit:hover {
+    opacity: 0.88;
+    transform: translateY(-1px);
+}
+
+.login .button-primary:active,
+.login #wp-submit:active {
+    transform: translateY(0);
+}
+
+/* ── Links nav ── */
+.login #nav a,
+.login #backtoblog a {
+    color: var(--amw-text-muted);
+    font-size: 12px;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.login #nav a:hover,
+.login #backtoblog a:hover {
+    color: var(--amw-text);
+}
+
+.login #nav,
+.login #backtoblog {
+    text-align: center;
+    margin-top: 16px;
+}
+
+/* ── Foco visible por teclado ── */
+.login h1 a:focus-visible,
+.login #nav a:focus-visible,
+.login #backtoblog a:focus-visible,
+.login #wp-submit:focus-visible {
+    outline: 2px solid var(--amw-accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+}
+
+/* ── Mensajes de error ── */
+.login #login_error {
+    background: var(--amw-surface-alt);
+    background: color-mix(in srgb, var(--amw-error) 12%, var(--amw-surface));
+    border-left: 3px solid var(--amw-error);
+    border-radius: var(--amw-radius-field);
+    color: var(--amw-error);
+    color: color-mix(in srgb, var(--amw-error) 55%, var(--amw-text));
+    font-size: 13px;
+    padding: 12px 16px;
+    margin-bottom: 16px;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+/* ── Mensajes de éxito / aviso ── */
+.login .message,
+.login .success {
+    background: var(--amw-surface-alt);
+    border-left: 3px solid var(--amw-text-muted);
+    border-left-color: color-mix(in srgb, var(--amw-text) 40%, var(--amw-border));
+    border-radius: var(--amw-radius-field);
+    color: var(--amw-text-muted);
+    font-size: 13px;
+    padding: 12px 16px;
+    margin-bottom: 16px;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+/* ── Toggle de contraseña (WP 5.8+) ── */
+.login .wp-pwd {
+    position: relative;
+}
+
+.login .wp-pwd button.button {
+    background: transparent;
+    border: none;
+    color: var(--amw-text-muted);
+    box-shadow: none;
+    padding: 0 4px;
+}
+
+.login .wp-pwd button.button:hover {
+    color: var(--amw-text);
+    background: transparent;
+    box-shadow: none;
+}
+
+.login .wp-pwd button .dashicons {
+    color: inherit;
+    fill: currentColor;
+}
+
+/* ── Links legales al pie ──
+   Sus estilos van ahora inline en login_head (amw_login_dynamic_styles),
+   para que la optimización de CSS de plugins de caché no los pode. */
+
+/* ── Responsive ── */
+@media (max-width: 360px) {
+    #loginform,
+    #lostpasswordform,
+    #registerform {
+        padding: 24px 20px;
+    }
+}
+
+/* ── Movimiento reducido ── */
+@media (prefers-reduced-motion: reduce) {
+    .login .button-primary,
+    .login #wp-submit,
+    .login #nav a,
+    .login #backtoblog a,
+    .login input[type="text"],
+    .login input[type="password"],
+    .login input[type="email"] {
+        transition: none;
+    }
+
+    .login .button-primary:hover,
+    .login #wp-submit:hover {
+        transform: none;
+    }
+}
