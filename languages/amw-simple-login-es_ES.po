@@ -1,0 +1,314 @@
+# Spanish (Spain) translation for AMW Simple Login.
+# Copyright (C) Álvaro Márquez Díaz
+msgid ""
+msgstr ""
+"Project-Id-Version: AMW Simple Login 1.2.0\n"
+"Report-Msgid-Bugs-To: https://alvaromarquezweb.com\n"
+"POT-Creation-Date: 2026-07-28 12:12+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2026-07-28 12:12+0000\n"
+"Language: es_ES\n"
+"X-Domain: amw-simple-login\n"
+
+msgid "Legal notice"
+msgstr "Aviso Legal"
+
+msgid "Privacy policy"
+msgstr "Política de Privacidad"
+
+msgid "Cookie policy"
+msgstr "Política de Cookies"
+
+msgid "Page background"
+msgstr "Fondo de página"
+
+msgid "Form background"
+msgstr "Fondo del formulario"
+
+msgid "Notices and messages background"
+msgstr "Fondo de avisos y mensajes"
+
+msgid "Fields background"
+msgstr "Fondo de los campos"
+
+msgid "Border color"
+msgstr "Color de bordes"
+
+msgid "Primary text"
+msgstr "Texto principal"
+
+msgid "Secondary text / labels"
+msgstr "Texto secundario / etiquetas"
+
+msgid "Button (background)"
+msgstr "Botón (fondo)"
+
+msgid "Button (text)"
+msgstr "Botón (texto)"
+
+msgid "Dark"
+msgstr "Oscuro"
+
+msgid "Light"
+msgstr "Claro"
+
+msgid "Slate"
+msgstr "Pizarra"
+
+msgid "Settings"
+msgstr "Ajustes"
+
+msgid "AMW Login"
+msgstr "AMW Login"
+
+msgid "Select logo"
+msgstr "Seleccionar logo"
+
+msgid "Use this logo"
+msgstr "Usar este logo"
+
+msgid "Change logo"
+msgstr "Cambiar logo"
+
+msgid "Remove"
+msgstr "Eliminar"
+
+msgid "Select background image"
+msgstr "Seleccionar imagen de fondo"
+
+msgid "Use this image"
+msgstr "Usar esta imagen"
+
+msgid "Select image"
+msgstr "Seleccionar imagen"
+
+msgid "Change image"
+msgstr "Cambiar imagen"
+
+msgid "You are not allowed to do this."
+msgstr "No tienes permiso para hacer esto."
+
+msgid "Settings imported successfully."
+msgstr "Ajustes importados correctamente."
+
+msgid "Import failed: the pasted text is not valid JSON."
+msgstr "La importación ha fallado: el texto pegado no es un JSON válido."
+
+msgid "AMW Simple Login"
+msgstr "AMW Simple Login"
+
+msgid "Open the login screen"
+msgstr "Ver la pantalla de acceso"
+
+msgid "Design"
+msgstr "Diseño"
+
+msgid "Background"
+msgstr "Fondo"
+
+msgid "Content"
+msgstr "Contenido"
+
+msgid "Security"
+msgstr "Seguridad"
+
+msgid "Tools"
+msgstr "Herramientas"
+
+msgid "Logo"
+msgstr "Logo"
+
+msgid "Login logo"
+msgstr "Logo del login"
+
+msgid "If you do not select a logo, the Customizer logo (Site Identity) is used. If there is none either, the plugin fallback logo is shown."
+msgstr "Si no seleccionas un logo, se usará el del Personalizador (Identidad del sitio). Si tampoco hay ninguno, se mostrará el logo de reserva del plugin."
+
+msgid "Color palette"
+msgstr "Paleta de colores"
+
+msgid "Presets:"
+msgstr "Presets:"
+
+msgid "Fills the colors below. Remember to save."
+msgstr "Rellena los colores de abajo. Recuerda guardar."
+
+msgid "Login box"
+msgstr "Caja del login"
+
+msgid "Shadow"
+msgstr "Sombra"
+
+msgid "Enable"
+msgstr "Activar"
+
+msgid "Shadow amount"
+msgstr "Cantidad de sombra"
+
+msgid "Shadow color"
+msgstr "Color de la sombra"
+
+msgid "Selected field color"
+msgstr "Color del campo seleccionado"
+
+msgid "Border and glow color of the focused input."
+msgstr "Color del borde y el halo del campo enfocado."
+
+msgid "Interface options"
+msgstr "Opciones de interfaz"
+
+msgid "Corner radius"
+msgstr "Redondeo de esquinas"
+
+msgid "From 0 (square corners) to 24. Fields and the button use a slightly smaller radius so the box stays balanced."
+msgstr "De 0 (esquinas rectas) a 24. Los campos y el botón usan un redondeo algo menor para que la caja no quede desproporcionada."
+
+msgid "Hide \"Go to [site]\""
+msgstr "Ocultar «Volver a [sitio]»"
+
+msgid "Hide \"Lost your password?\""
+msgstr "Ocultar «¿Olvidaste tu contraseña?»"
+
+msgid "Only hides the link on the login screen. Password recovery still works via direct URL."
+msgstr "Solo oculta el enlace en la pantalla de acceso. La recuperación de contraseña sigue funcionando por URL directa."
+
+msgid "Form position"
+msgstr "Disposición del formulario"
+
+msgid "Position"
+msgstr "Posición"
+
+msgid "Left"
+msgstr "Izquierda"
+
+msgid "Center"
+msgstr "Centro"
+
+msgid "Right"
+msgstr "Derecha"
+
+msgid "Where the login sits. In left and right, an image (if set) shows on the opposite side and a solid panel sits behind the form. Center has no panel. On mobile the form is always centered."
+msgstr "Dónde se sitúa el login. En izquierda y derecha, la imagen (si la hay) se muestra en el lado contrario y un panel sólido queda tras el formulario. En centro no hay panel. En móvil el formulario siempre se centra."
+
+msgid "Type"
+msgstr "Tipo"
+
+msgid "Solid color"
+msgstr "Color sólido"
+
+msgid "Gradient"
+msgstr "Degradado"
+
+msgid "Image"
+msgstr "Imagen"
+
+msgid "Color / start"
+msgstr "Color / inicio"
+
+msgid "Gradient end & angle"
+msgstr "Fin y ángulo del degradado"
+
+msgid "End"
+msgstr "Fin"
+
+msgid "Angle"
+msgstr "Ángulo"
+
+msgid "Use a light image: the login screen is not cached and loads fully on every visit."
+msgstr "Usa una imagen ligera: la pantalla de acceso no se cachea y se carga entera en cada acceso."
+
+msgid "Image blur"
+msgstr "Desenfoque de la imagen"
+
+msgid "From 0 (no blur) to 20. Combined with the overlay it gives a frosted-glass effect and improves legibility over busy photos."
+msgstr "De 0 (sin desenfoque) a 20. Combinado con el overlay da un efecto cristal esmerilado y mejora la legibilidad sobre fotos con mucho detalle."
+
+msgid "Overlay"
+msgstr "Overlay"
+
+msgid "Overlay opacity"
+msgstr "Opacidad del overlay"
+
+msgid "Panel behind the login"
+msgstr "Panel tras el login"
+
+msgid "Color"
+msgstr "Color"
+
+msgid "Solid color behind the form. Shown only in the left and right positions."
+msgstr "Color sólido tras el formulario. Solo se muestra en las posiciones izquierda y derecha."
+
+msgid "Heading text"
+msgstr "Texto de encabezado"
+
+msgid "Text above the form"
+msgstr "Texto sobre el formulario"
+
+msgid "e.g. Welcome to Client Name"
+msgstr "p. ej. Bienvenido a Nombre del Cliente"
+
+msgid "Optional. Shown between the logo and the form. Leave empty to hide it."
+msgstr "Opcional. Se muestra entre el logo y el formulario. Déjalo vacío para ocultarlo."
+
+msgid "Extra CSS"
+msgstr "CSS extra"
+
+msgid "Custom CSS for the login"
+msgstr "CSS personalizado para el login"
+
+msgid "Injected only on the login screen, after the plugin styles. For per-site tweaks without editing files."
+msgstr "Se inyecta solo en la pantalla de acceso, después de los estilos del plugin. Para retoques por sitio sin tocar archivos."
+
+msgid "Legal links in the login footer"
+msgstr "Enlaces legales al pie del login"
+
+msgid "Show legal links"
+msgstr "Mostrar enlaces legales"
+
+msgid "Link text · Page URL"
+msgstr "Texto del enlace · URL de la página"
+
+msgid "This plugin is not a security plugin and does not replace one. It only adds two lightweight measures on the login screen: a honeypot (a hidden bait field that bots fill in and real users never see, which rejects the attempt when filled) and a generic error message that never reveals whether the username or the password was wrong. The honeypot never affects XML-RPC or application-password logins."
+msgstr "Este plugin no es un plugin de seguridad ni lo sustituye. Solo añade dos medidas ligeras en la pantalla de acceso: un honeypot (un campo cebo oculto que los bots rellenan y los usuarios reales no ven, que rechaza el intento si llega relleno) y un mensaje de error genérico que nunca revela si fallaba el usuario o la contraseña. El honeypot no afecta a los accesos por XML-RPC ni por contraseñas de aplicación."
+
+msgid "Honeypot"
+msgstr "Honeypot"
+
+msgid "Enable the honeypot"
+msgstr "Activar el honeypot"
+
+msgid "On by default. It can also be forced on or off from code with the amw_login_honeypot_enabled filter."
+msgstr "Activado por defecto. También puede forzarse (activar o desactivar) desde código con el filtro amw_login_honeypot_enabled."
+
+msgid "Export / Import settings"
+msgstr "Exportar / Importar ajustes"
+
+msgid "Copy the JSON to replicate this configuration on another site, or paste a saved configuration to import it."
+msgstr "Copia el JSON para replicar esta configuración en otro sitio, o pega una configuración guardada para importarla."
+
+msgid "Export"
+msgstr "Exportar"
+
+msgid "Copy"
+msgstr "Copiar"
+
+msgid "Download .json"
+msgstr "Descargar .json"
+
+msgid "Import"
+msgstr "Importar"
+
+msgid "Import settings"
+msgstr "Importar ajustes"
+
+msgid "Overwrites the current configuration on this site."
+msgstr "Sobrescribe la configuración actual de este sitio."
+
+msgid "The credentials you entered are not correct."
+msgstr "Las credenciales introducidas no son correctas."
+
+msgid "User"
+msgstr "Usuario"
+
