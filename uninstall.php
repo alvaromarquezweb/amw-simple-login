@@ -1,7 +1,7 @@
 <?php
 /**
- * Desinstalación de AMW Simple Login.
- * Borra la opción del plugin para no dejar residuos en la base de datos.
+ * Uninstall AMW Simple Login.
+ * Deletes the plugin option so no residue is left in the database.
  */
 
 if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
