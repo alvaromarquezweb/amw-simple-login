@@ -4,13 +4,19 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AMW Simple Login 1.2.0\n"
 "Report-Msgid-Bugs-To: https://alvaromarquezweb.com\n"
-"POT-Creation-Date: 2026-07-28 12:12+0000\n"
+"POT-Creation-Date: 2026-07-28 13:22+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2026-07-28 12:12+0000\n"
+"PO-Revision-Date: 2026-07-28 13:22+0000\n"
 "Language: es_ES\n"
 "X-Domain: amw-simple-login\n"
+
+msgid "The credentials you entered are not correct."
+msgstr "Las credenciales introducidas no son correctas."
+
+msgid "User"
+msgstr "Usuario"
 
 msgid "Legal notice"
 msgstr "Aviso Legal"
@@ -101,6 +107,9 @@ msgstr "AMW Simple Login"
 
 msgid "Open the login screen"
 msgstr "Ver la pantalla de acceso"
+
+msgid "Buy me a coffee"
+msgstr "Invítame a un café"
 
 msgid "Design"
 msgstr "Diseño"
@@ -305,10 +314,4 @@ msgstr "Importar ajustes"
 
 msgid "Overwrites the current configuration on this site."
 msgstr "Sobrescribe la configuración actual de este sitio."
-
-msgid "The credentials you entered are not correct."
-msgstr "Las credenciales introducidas no son correctas."
-
-msgid "User"
-msgstr "Usuario"
 
