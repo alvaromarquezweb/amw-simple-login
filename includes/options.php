@@ -32,6 +32,7 @@ function amw_login_defaults() {
         'legal_cookies'          => '/politica-de-cookies/',
         'legal_cookies_label'    => __( 'Cookie policy', 'amw-simple-login' ),
         'logo_id'                => '',
+        'logo_url'               => '', // where the login logo links to; empty = site home
         'bg_id'                  => '',
         'layout'                 => 'center', // left | center | right (login position, always applies)
         // Background (v1.2.0): solid | gradient | image.
@@ -254,6 +255,7 @@ function amw_login_sanitize_options( $input ) {
     }
 
     $output['logo_id'] = ! empty( $input['logo_id'] ) ? absint( $input['logo_id'] ) : '';
+    $output['logo_url'] = isset( $input['logo_url'] ) ? esc_url_raw( trim( $input['logo_url'] ) ) : $defaults['logo_url'];
     $output['bg_id']   = ! empty( $input['bg_id'] ) ? absint( $input['bg_id'] ) : '';
 
     $layout           = isset( $input['layout'] ) ? sanitize_key( $input['layout'] ) : '';
