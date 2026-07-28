@@ -424,6 +424,14 @@ function amw_login_settings_page() {
                         <code id="amw_ov_val" style="margin-left:8px;"><?php echo esc_html( (int) $opts['ov_opacity'] ); ?> %</code>
                     </td>
                 </tr>
+                <tr class="amw-bg-image amw-ov-grad">
+                    <th scope="row"><label for="amw_ov_opacity2"><?php esc_html_e( 'End opacity', 'amw-simple-login' ); ?></label></th>
+                    <td>
+                        <input type="range" id="amw_ov_opacity2" name="amw_login_options[ov_opacity2]" min="0" max="100" step="1" value="<?php echo esc_attr( (int) $opts['ov_opacity2'] ); ?>" style="vertical-align:middle; width:220px;" oninput="document.getElementById('amw_ov_val2').textContent = this.value + ' %';">
+                        <code id="amw_ov_val2" style="margin-left:8px;"><?php echo esc_html( (int) $opts['ov_opacity2'] ); ?> %</code>
+                        <p class="description"><?php esc_html_e( 'Opacity at the end of the gradient. Lower it to fade the overlay to transparent.', 'amw-simple-login' ); ?></p>
+                    </td>
+                </tr>
             </table>
 
             <div id="amw-panel-section">

@@ -25,11 +25,11 @@ function amw_login_defaults() {
         'hide_forgotpw'     => '0',
         'honeypot_on'       => '1', // anti-bot honeypot on the login form
         'show_legal'        => '0',
-        'legal_aviso'            => '/legal-notice/',
+        'legal_aviso'            => '/aviso-legal/',
         'legal_aviso_label'      => __( 'Legal notice', 'amw-simple-login' ),
-        'legal_privacidad'       => '/privacy-policy/',
+        'legal_privacidad'       => '/politica-de-privacidad/',
         'legal_privacidad_label' => __( 'Privacy policy', 'amw-simple-login' ),
-        'legal_cookies'          => '/cookie-policy/',
+        'legal_cookies'          => '/politica-de-cookies/',
         'legal_cookies_label'    => __( 'Cookie policy', 'amw-simple-login' ),
         'logo_id'                => '',
         'bg_id'                  => '',
@@ -45,7 +45,8 @@ function amw_login_defaults() {
         'ov_color1'              => '#05070d',
         'ov_color2'              => '#0a1830',
         'ov_angle'               => 135,
-        'ov_opacity'             => 55,         // 0-100
+        'ov_opacity'             => 55,         // start / solid opacity, 0-100
+        'ov_opacity2'            => 55,         // gradient end opacity, 0-100
         // Solid panel behind the form (left/right positions only).
         'panel_color'            => '#0a0a0a',
         // Login box drop shadow.
@@ -121,6 +122,11 @@ function amw_login_get_options() {
         $raw = [];
     }
     $opts = wp_parse_args( $raw, amw_login_defaults() );
+    // Back-compat: the gradient end opacity inherits the single overlay opacity
+    // when it was never saved, so existing overlays keep their uniform look.
+    if ( ! isset( $raw['ov_opacity2'] ) && isset( $raw['ov_opacity'] ) ) {
+        $opts['ov_opacity2'] = (int) $raw['ov_opacity'];
+    }
     return amw_login_migrate_bg( $opts, $raw );
 }
 
@@ -269,7 +275,8 @@ function amw_login_sanitize_options( $input ) {
 
     $output['bg_angle']   = isset( $input['bg_angle'] ) ? max( 0, min( 360, absint( $input['bg_angle'] ) ) ) : $defaults['bg_angle'];
     $output['ov_angle']   = isset( $input['ov_angle'] ) ? max( 0, min( 360, absint( $input['ov_angle'] ) ) ) : $defaults['ov_angle'];
-    $output['ov_opacity'] = isset( $input['ov_opacity'] ) ? max( 0, min( 100, absint( $input['ov_opacity'] ) ) ) : $defaults['ov_opacity'];
+    $output['ov_opacity']  = isset( $input['ov_opacity'] ) ? max( 0, min( 100, absint( $input['ov_opacity'] ) ) ) : $defaults['ov_opacity'];
+    $output['ov_opacity2'] = isset( $input['ov_opacity2'] ) ? max( 0, min( 100, absint( $input['ov_opacity2'] ) ) ) : $defaults['ov_opacity2'];
 
     $output['shadow_on']     = ! empty( $input['shadow_on'] ) ? '1' : '0';
     $output['shadow_amount'] = isset( $input['shadow_amount'] ) ? max( 0, min( 100, absint( $input['shadow_amount'] ) ) ) : $defaults['shadow_amount'];

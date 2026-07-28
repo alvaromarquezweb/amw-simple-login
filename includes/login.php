@@ -235,16 +235,17 @@ function amw_login_dynamic_styles() {
         $ov1     = amw_login_css_color( $opts, 'ov_color1' );
         $ov2     = amw_login_css_color( $opts, 'ov_color2' );
         $ovang   = max( 0, min( 360, (int) $opts['ov_angle'] ) );
-        $ovop    = max( 0, min( 100, (int) $opts['ov_opacity'] ) ) / 100;
+        $ovop1   = max( 0, min( 100, (int) $opts['ov_opacity'] ) ) / 100;
+        $ovop2   = max( 0, min( 100, (int) $opts['ov_opacity2'] ) ) / 100;
         if ( 'gradient' === $ov_type ) {
             $overlay = sprintf(
                 'linear-gradient(%ddeg, %s, %s)',
                 $ovang,
-                amw_login_hex_to_rgba( $ov1, $ovop ),
-                amw_login_hex_to_rgba( $ov2, $ovop )
+                amw_login_hex_to_rgba( $ov1, $ovop1 ),
+                amw_login_hex_to_rgba( $ov2, $ovop2 )
             );
         } else {
-            $r       = amw_login_hex_to_rgba( $ov1, $ovop );
+            $r       = amw_login_hex_to_rgba( $ov1, $ovop1 );
             $overlay = sprintf( 'linear-gradient(%s, %s)', $r, $r );
         }
     }
