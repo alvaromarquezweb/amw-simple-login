@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AMW Simple Login 1.2.0\n"
 "Report-Msgid-Bugs-To: https://alvaromarquezweb.com\n"
-"POT-Creation-Date: 2026-07-28 13:36+0000\n"
+"POT-Creation-Date: 2026-07-28 13:48+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -110,6 +110,9 @@ msgstr ""
 msgid "Buy me a coffee"
 msgstr ""
 
+msgid "Settings sections"
+msgstr ""
+
 msgid "Design"
 msgstr ""
 
@@ -132,6 +135,12 @@ msgid "Login logo"
 msgstr ""
 
 msgid "If you do not select a logo, the Customizer logo (Site Identity) is used. If there is none either, the plugin fallback logo is shown."
+msgstr ""
+
+msgid "Logo link"
+msgstr ""
+
+msgid "Where the logo links to. Leave empty to use the site home."
 msgstr ""
 
 msgid "Color palette"
