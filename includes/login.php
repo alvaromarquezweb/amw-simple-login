@@ -18,7 +18,8 @@ function amw_login_init() {
     add_filter( 'login_message', 'amw_login_heading' );
 
     add_filter( 'login_headerurl', function() {
-        return home_url( '/' );
+        $opts = amw_login_get_options();
+        return ! empty( $opts['logo_url'] ) ? $opts['logo_url'] : home_url( '/' );
     } );
 
     add_filter( 'login_headertext', function() {
@@ -321,4 +322,3 @@ function amw_login_footer_legal() {
 
     echo '<p class="amw-legal-links">' . implode( ' · ', $items ) . '</p>';
 }
-
