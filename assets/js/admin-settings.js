@@ -13,20 +13,40 @@
 		// ── Colour fields: WordPress Iris picker (type or paste a hex) ──
 		$( '.amw-color-field' ).wpColorPicker();
 
-		// ── Tabs ──
+		// ── Tabs (ARIA tab pattern with keyboard support) ──
 		var $tabs   = $( '.amw-tabs .nav-tab' );
 		var $panels = $( '.amw-tab-panel' );
 		var $submit = $( '.amw-submit' );
 
-		$tabs.on( 'click', function( e ) {
-			e.preventDefault();
-			var tab = $( this ).data( 'amwTab' );
-			$tabs.removeClass( 'nav-tab-active' );
-			$( this ).addClass( 'nav-tab-active' );
+		function activateTab( $tab, setFocus ) {
+			var tab = $tab.data( 'amwTab' );
+			$tabs.removeClass( 'nav-tab-active' ).attr( { 'aria-selected': 'false', tabindex: '-1' } );
+			$tab.addClass( 'nav-tab-active' ).attr( { 'aria-selected': 'true', tabindex: '0' } );
 			$panels.removeClass( 'amw-active' )
 				.filter( '[data-amw-panel="' + tab + '"]' ).addClass( 'amw-active' );
 			// The main Save button only applies to the option-form tabs.
 			$submit.toggle( tab !== 'herramientas' );
+			if ( setFocus ) { $tab.trigger( 'focus' ); }
+		}
+
+		$tabs.on( 'click', function( e ) {
+			e.preventDefault();
+			activateTab( $( this ), false );
+		} );
+
+		$tabs.on( 'keydown', function( e ) {
+			var i = $tabs.index( this );
+			var last = $tabs.length - 1;
+			var target;
+			switch ( e.key ) {
+				case 'ArrowRight': case 'ArrowDown': target = i < last ? i + 1 : 0; break;
+				case 'ArrowLeft':  case 'ArrowUp':   target = i > 0 ? i - 1 : last; break;
+				case 'Home': target = 0; break;
+				case 'End':  target = last; break;
+				default: return;
+			}
+			e.preventDefault();
+			activateTab( $tabs.eq( target ), true );
 		} );
 
 		// ── Media picker helper ──
@@ -114,8 +134,12 @@
 		$( '#amw-export-copy' ).on( 'click', function( e ) {
 			e.preventDefault();
 			var ta = document.getElementById( 'amw_export_json' );
-			ta.select();
-			document.execCommand( 'copy' );
+			if ( navigator.clipboard && navigator.clipboard.writeText ) {
+				navigator.clipboard.writeText( ta.value );
+			} else {
+				ta.select();
+				document.execCommand( 'copy' );
+			}
 		} );
 		$( '#amw-export-download' ).on( 'click', function( e ) {
 			e.preventDefault();
