@@ -1,24 +1,24 @@
 /* ─────────────────────────────────────────
-   AMW Custom Login — v1.0.0
+   AMW Simple Login — v1.1.0
    alvaromarquezweb.com
 
-   FUENTES: system-ui, sin carga externa.
-   El navegador usa la fuente del sistema operativo
-   (San Francisco en macOS/iOS, Segoe UI en Windows,
-   Roboto en Android/Chrome OS).
+   FONTS: system-ui, no external load.
+   The browser uses the operating system font
+   (San Francisco on macOS/iOS, Segoe UI on Windows,
+   Roboto on Android/Chrome OS).
 
-   COLORES: todas las variables se inyectan desde PHP
-   (amw_login_dynamic_styles). Los valores de :root son
-   únicamente fallback de seguridad.
+   COLORS: every variable is injected from PHP
+   (amw_login_dynamic_styles). The :root values are
+   only a safety fallback.
 
-   Los tonos derivados (foco, errores, degradado de fondo)
-   se calculan con color-mix a partir de --amw-text, para que
-   la pantalla funcione igual con paleta clara u oscura.
-   Cada regla lleva antes una declaración simple como reserva
-   para navegadores sin soporte de color-mix.
+   Derived tones (focus, errors, background tint) are
+   computed with color-mix from --amw-text, so the
+   screen works the same with a light or dark palette.
+   Each rule ships a plain declaration first as a fallback
+   for browsers without color-mix support.
 ───────────────────────────────────────── */
 
-/* ── Variables (fallback: se sobreescriben desde PHP) ── */
+/* ── Variables (fallback: overridden from PHP) ── */
 :root {
     --amw-bg:           #0a0a0a;
     --amw-surface:      #141414;
@@ -31,22 +31,22 @@
     --amw-accent-fg:    #0a0a0a;
     --amw-error:        #c0392b;
     --amw-radius:       8px;
-    /* Radio de campos y botón: se deriva del principal y se topa en 10px,
-       para que con radios grandes la caja no acabe llena de píldoras. */
+    /* Field and button radius: derived from the main one and capped at 10px,
+       so large radii do not turn the whole box into pills. */
     --amw-radius-field: min(var(--amw-radius), 10px);
     --amw-logo-width:   160px;
     --amw-logo-height:  60px;
     --amw-font:         system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
 }
 
-/* ── Reset base ── */
+/* ── Base reset ── */
 *,
 *::before,
 *::after {
     box-sizing: border-box;
 }
 
-/* ── Página ── */
+/* ── Page ── */
 html {
     height: 100%;
 }
@@ -66,7 +66,7 @@ body.login {
     position: relative;
 }
 
-/* ── Contenedor principal, centrado con transform ── */
+/* ── Main container, centered with transform ── */
 body.login #login {
     position: absolute;
     top: 50%;
@@ -84,9 +84,9 @@ body.login #login > * {
 }
 
 /* ── Logo ──
-   Sustitución de imagen por el método "Phark": el texto sigue
-   presente en el árbol de accesibilidad (los lectores de pantalla
-   leen el nombre del sitio) pero no se ve. */
+   Image replacement using the "Phark" method: the text stays
+   in the accessibility tree (screen readers read the site name)
+   but is not visible. */
 .login h1 {
     text-align: center;
     margin: 0 0 8px;
@@ -108,14 +108,14 @@ body.login #login > * {
     overflow: hidden;
 }
 
-/* Oculta el "Acceder" / título de página que WP pinta fuera del #login */
+/* Hide the "Log In" / page title WP prints outside #login */
 .login #login_header,
 .login .login-header,
 body.login > h1:first-of-type {
     display: none !important;
 }
 
-/* ── Caja del formulario ── */
+/* ── Form box ── */
 #loginform,
 #lostpasswordform,
 #registerform {
@@ -168,7 +168,7 @@ body.login > h1:first-of-type {
     box-shadow: 0 0 0 3px color-mix(in srgb, var(--amw-text) 8%, transparent) !important;
 }
 
-/* ── Checkbox "Recordarme" ── */
+/* ── "Remember me" checkbox ── */
 .login .forgetmenot {
     display: flex;
     align-items: center;
@@ -195,7 +195,7 @@ body.login > h1:first-of-type {
     flex-shrink: 0;
 }
 
-/* ── Botón principal ── */
+/* ── Primary button ── */
 .login .button-primary,
 .login #wp-submit {
     background: var(--amw-accent) !important;
@@ -226,7 +226,7 @@ body.login > h1:first-of-type {
     transform: translateY(0);
 }
 
-/* ── Links nav ── */
+/* ── Nav links ── */
 .login #nav a,
 .login #backtoblog a {
     color: var(--amw-text-muted);
@@ -246,7 +246,7 @@ body.login > h1:first-of-type {
     margin-top: 16px;
 }
 
-/* ── Foco visible por teclado ── */
+/* ── Keyboard focus visible ── */
 .login h1 a:focus-visible,
 .login #nav a:focus-visible,
 .login #backtoblog a:focus-visible,
@@ -256,7 +256,7 @@ body.login > h1:first-of-type {
     border-radius: 2px;
 }
 
-/* ── Mensajes de error ── */
+/* ── Error messages ── */
 .login #login_error {
     background: var(--amw-surface-alt);
     background: color-mix(in srgb, var(--amw-error) 12%, var(--amw-surface));
@@ -271,7 +271,7 @@ body.login > h1:first-of-type {
     margin-right: 0 !important;
 }
 
-/* ── Mensajes de éxito / aviso ── */
+/* ── Success / notice messages ── */
 .login .message,
 .login .success {
     background: var(--amw-surface-alt);
@@ -286,7 +286,7 @@ body.login > h1:first-of-type {
     margin-right: 0 !important;
 }
 
-/* ── Toggle de contraseña (WP 5.8+) ── */
+/* ── Password toggle (WP 5.8+) ── */
 .login .wp-pwd {
     position: relative;
 }
@@ -310,9 +310,9 @@ body.login > h1:first-of-type {
     fill: currentColor;
 }
 
-/* ── Links legales al pie ──
-   Sus estilos van ahora inline en login_head (amw_login_dynamic_styles),
-   para que la optimización de CSS de plugins de caché no los pode. */
+/* ── Optional heading and legal links ──
+   Their styles are injected inline in login_head (amw_login_dynamic_styles),
+   so cache-plugin CSS optimization does not prune them. */
 
 /* ── Responsive ── */
 @media (max-width: 360px) {
@@ -323,7 +323,7 @@ body.login > h1:first-of-type {
     }
 }
 
-/* ── Movimiento reducido ── */
+/* ── Reduced motion ── */
 @media (prefers-reduced-motion: reduce) {
     .login .button-primary,
     .login #wp-submit,
