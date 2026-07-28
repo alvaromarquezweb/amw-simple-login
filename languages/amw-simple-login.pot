@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AMW Simple Login 1.2.0\n"
 "Report-Msgid-Bugs-To: https://alvaromarquezweb.com\n"
-"POT-Creation-Date: 2026-07-28 13:22+0000\n"
+"POT-Creation-Date: 2026-07-28 13:36+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -237,6 +237,12 @@ msgid "Overlay"
 msgstr ""
 
 msgid "Overlay opacity"
+msgstr ""
+
+msgid "End opacity"
+msgstr ""
+
+msgid "Opacity at the end of the gradient. Lower it to fade the overlay to transparent."
 msgstr ""
 
 msgid "Panel behind the login"
