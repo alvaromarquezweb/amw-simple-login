@@ -29,7 +29,9 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
-define( 'AMW_LOGIN_VERSION', '1.1.0' );
+// Single source of truth: read the version from the plugin header above, so the
+// constant can never drift from it. To release, bump ONLY the header line.
+define( 'AMW_LOGIN_VERSION', get_file_data( __FILE__, [ 'Version' => 'Version' ] )['Version'] ?: '0.0.0' );
 define( 'AMW_LOGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'AMW_LOGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'AMW_LOGIN_BASENAME', plugin_basename( __FILE__ ) );
