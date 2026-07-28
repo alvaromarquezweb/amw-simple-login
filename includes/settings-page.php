@@ -170,18 +170,18 @@ function amw_login_settings_page() {
             </div>
         </div>
 
-        <nav class="nav-tab-wrapper amw-tabs">
-            <a href="#" class="nav-tab nav-tab-active" data-amw-tab="diseno"><?php esc_html_e( 'Design', 'amw-simple-login' ); ?></a>
-            <a href="#" class="nav-tab" data-amw-tab="fondo"><?php esc_html_e( 'Background', 'amw-simple-login' ); ?></a>
-            <a href="#" class="nav-tab" data-amw-tab="contenido"><?php esc_html_e( 'Content', 'amw-simple-login' ); ?></a>
-            <a href="#" class="nav-tab" data-amw-tab="seguridad"><?php esc_html_e( 'Security', 'amw-simple-login' ); ?></a>
-            <a href="#" class="nav-tab" data-amw-tab="herramientas"><?php esc_html_e( 'Tools', 'amw-simple-login' ); ?></a>
+        <nav class="nav-tab-wrapper amw-tabs" role="tablist" aria-label="<?php esc_attr_e( 'Settings sections', 'amw-simple-login' ); ?>">
+            <a href="#" class="nav-tab nav-tab-active" data-amw-tab="diseno" id="amw-tab-diseno" role="tab" aria-controls="amw-panel-diseno" aria-selected="true" tabindex="0"><?php esc_html_e( 'Design', 'amw-simple-login' ); ?></a>
+            <a href="#" class="nav-tab" data-amw-tab="fondo" id="amw-tab-fondo" role="tab" aria-controls="amw-panel-fondo" aria-selected="false" tabindex="-1"><?php esc_html_e( 'Background', 'amw-simple-login' ); ?></a>
+            <a href="#" class="nav-tab" data-amw-tab="contenido" id="amw-tab-contenido" role="tab" aria-controls="amw-panel-contenido" aria-selected="false" tabindex="-1"><?php esc_html_e( 'Content', 'amw-simple-login' ); ?></a>
+            <a href="#" class="nav-tab" data-amw-tab="seguridad" id="amw-tab-seguridad" role="tab" aria-controls="amw-panel-seguridad" aria-selected="false" tabindex="-1"><?php esc_html_e( 'Security', 'amw-simple-login' ); ?></a>
+            <a href="#" class="nav-tab" data-amw-tab="herramientas" id="amw-tab-herramientas" role="tab" aria-controls="amw-panel-herramientas" aria-selected="false" tabindex="-1"><?php esc_html_e( 'Tools', 'amw-simple-login' ); ?></a>
         </nav>
 
         <form method="post" action="options.php">
             <?php settings_fields( 'amw_login_group' ); ?>
 
-            <div class="amw-tab-panel amw-active" data-amw-panel="diseno">
+            <div class="amw-tab-panel amw-active" data-amw-panel="diseno" id="amw-panel-diseno" role="tabpanel" aria-labelledby="amw-tab-diseno" tabindex="0">
             <h2><?php esc_html_e( 'Logo', 'amw-simple-login' ); ?></h2>
             <table class="form-table" role="presentation">
                 <tr>
@@ -207,6 +207,13 @@ function amw_login_settings_page() {
                         <p class="description" style="margin-top:8px;">
                             <?php esc_html_e( 'If you do not select a logo, the Customizer logo (Site Identity) is used. If there is none either, the plugin fallback logo is shown.', 'amw-simple-login' ); ?>
                         </p>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row"><label for="amw_logo_url"><?php esc_html_e( 'Logo link', 'amw-simple-login' ); ?></label></th>
+                    <td>
+                        <input type="url" id="amw_logo_url" name="amw_login_options[logo_url]" value="<?php echo esc_attr( $opts['logo_url'] ); ?>" class="regular-text" placeholder="<?php echo esc_attr( home_url( '/' ) ); ?>" style="width:360px;">
+                        <p class="description"><?php esc_html_e( 'Where the logo links to. Leave empty to use the site home.', 'amw-simple-login' ); ?></p>
                     </td>
                 </tr>
             </table>
@@ -304,7 +311,7 @@ function amw_login_settings_page() {
             </table>
             </div>
 
-            <div class="amw-tab-panel" data-amw-panel="fondo">
+            <div class="amw-tab-panel" data-amw-panel="fondo" id="amw-panel-fondo" role="tabpanel" aria-labelledby="amw-tab-fondo" tabindex="0">
             <h2><?php esc_html_e( 'Form position', 'amw-simple-login' ); ?></h2>
             <table class="form-table" role="presentation">
                 <tr>
@@ -449,7 +456,7 @@ function amw_login_settings_page() {
             </div>
             </div>
 
-            <div class="amw-tab-panel" data-amw-panel="contenido">
+            <div class="amw-tab-panel" data-amw-panel="contenido" id="amw-panel-contenido" role="tabpanel" aria-labelledby="amw-tab-contenido" tabindex="0">
             <h2><?php esc_html_e( 'Heading text', 'amw-simple-login' ); ?></h2>
             <table class="form-table" role="presentation">
                 <tr>
@@ -500,7 +507,7 @@ function amw_login_settings_page() {
             </table>
             </div>
 
-            <div class="amw-tab-panel" data-amw-panel="seguridad">
+            <div class="amw-tab-panel" data-amw-panel="seguridad" id="amw-panel-seguridad" role="tabpanel" aria-labelledby="amw-tab-seguridad" tabindex="0">
             <h2><?php esc_html_e( 'Security', 'amw-simple-login' ); ?></h2>
             <p class="description" style="max-width:640px; margin-bottom:8px;">
                 <?php esc_html_e( 'This plugin is not a security plugin and does not replace one. It only adds two lightweight measures on the login screen: a honeypot (a hidden bait field that bots fill in and real users never see, which rejects the attempt when filled) and a generic error message that never reveals whether the username or the password was wrong. The honeypot never affects XML-RPC or application-password logins.', 'amw-simple-login' ); ?>
@@ -524,7 +531,7 @@ function amw_login_settings_page() {
             <div class="amw-submit"><?php submit_button(); ?></div>
         </form>
 
-        <div class="amw-tab-panel" data-amw-panel="herramientas">
+        <div class="amw-tab-panel" data-amw-panel="herramientas" id="amw-panel-herramientas" role="tabpanel" aria-labelledby="amw-tab-herramientas" tabindex="0">
         <h2><?php esc_html_e( 'Export / Import settings', 'amw-simple-login' ); ?></h2>
         <p class="description">
             <?php esc_html_e( 'Copy the JSON to replicate this configuration on another site, or paste a saved configuration to import it.', 'amw-simple-login' ); ?>
