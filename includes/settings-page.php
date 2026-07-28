@@ -164,6 +164,8 @@ function amw_login_settings_page() {
                     <a href="<?php echo esc_url( wp_login_url() ); ?>" target="_blank" rel="noopener"><?php esc_html_e( 'Open the login screen', 'amw-simple-login' ); ?></a>
                     <span class="amw-dot"> &middot; </span>
                     <a href="https://alvaromarquezweb.com" target="_blank" rel="noopener noreferrer">alvaromarquezweb.com</a>
+                    <span class="amw-dot"> &middot; </span>
+                    <a href="https://buymeacoffee.com/alvaromarquezweb" target="_blank" rel="noopener noreferrer">&#9749; <?php esc_html_e( 'Buy me a coffee', 'amw-simple-login' ); ?></a>
                 </p>
             </div>
         </div>
