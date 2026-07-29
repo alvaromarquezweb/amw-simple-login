@@ -96,7 +96,9 @@
 		// ── Background type / overlay show-hide ──
 		function ovToggle() {
 			var img = $( 'input.amw-bg-type:checked' ).val() === 'image';
-			$( '.amw-ov-grad' ).toggle( img && $( 'input.amw-ov-type:checked' ).val() === 'gradient' );
+			var ov  = $( 'input.amw-ov-type:checked' ).val();
+			$( '.amw-ov-on' ).toggle( img && ov !== 'none' );
+			$( '.amw-ov-grad' ).toggle( img && ov === 'gradient' );
 		}
 		function bgToggle() {
 			var t = $( 'input.amw-bg-type:checked' ).val();
