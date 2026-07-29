@@ -1,56 +1,83 @@
 # AMW Simple Login
 
-A WordPress plugin to fully customize the login screen (`wp-login.php`): logo, colors, a two-column background image, legal links and a few security tweaks. Built for anyone who deploys across many sites: it is configured entirely from the dashboard and updates itself from GitHub.
+Customises the WordPress login screen from a single settings page: backgrounds, colours, logo, layout, and a few sensible extras, with no external assets and no bloat.
 
-## ✨ Features
+![License](https://img.shields.io/badge/license-GPL--2.0--or--later-blue)
+![Requires PHP](https://img.shields.io/badge/PHP-7.0%2B-777bb4)
+![Requires WordPress](https://img.shields.io/badge/WordPress-5.5%2B-21759b)
 
-- **Logo** picked from the media library, with automatic detection of the site's own logo when none is set.
-- **Full color palette** (page, form, fields, borders, text, button), injected as CSS variables.
-- **Two-column background image**: form on the left, center or right, with adjustable blur and an overlay whose color and intensity you control.
-- **Legal links** in the login footer (legal notice, privacy, cookies), with your own text and URLs.
-- **Interface options**: corner radius and hiding the "back to site" and "lost your password?" links.
-- **Security**: generic login error message (never reveals whether a username exists) and removal of WordPress fingerprints on the login screen.
-- **Divi-friendly**: uses the logo set in Divi's Theme Options when no other logo is configured.
-- **Self-updating** from this repository's releases.
-- **Dark theme by default**, system font, no external assets.
+## Features
 
-## 📋 Requirements
+### Appearance
+- Logo from the media library, with a configurable link destination. Falls back to the Customizer logo, and then to a built in logo.
+- Form position: left, centre, or right. Left and right use a two column layout with a solid panel behind the form.
+- Background: solid colour, gradient, or image.
+  - Image backgrounds support blur and an overlay (none, solid, or gradient). Gradient overlays have separate start and end opacity, so they can fade to transparent.
+- Login box drop shadow (toggle, amount, colour) and a colour for the selected field.
+- Colour palette of nine tokens with three presets: Dark, Light, and Slate.
+- Corner radius, optional heading text above the form, and an extra CSS box for per site tweaks.
+- Legal links in the login footer (legal notice, privacy, cookies), plus options to hide the default WordPress links.
 
-- WordPress 5.9 or later
-- PHP 7.4 or later
-- Divi (optional, only for its logo detection)
+### Security (lightweight by design)
+This is not a security plugin and does not replace one. It adds two small measures on the login screen:
+- An anti bot honeypot (a toggle in the settings, and a filter for code).
+- A generic error message that does not reveal whether the username or the password was wrong.
 
-## 🔧 Installation
+### Admin experience
+- Tabbed settings panel with native WordPress styling, keyboard navigation, and ARIA roles.
+- The WordPress colour picker on every colour field, so you can type or paste a hex value.
+- Export and import all settings as JSON.
+- Fully translatable. Ships with English source strings and a Spanish (es_ES) translation, including the plugin description shown on the Plugins screen.
 
-1. Download the `.zip` from the latest [release](../../releases/latest).
-2. In WordPress, go to **Plugins → Add New → Upload Plugin**, upload the file and activate it.
-3. Once active, future updates arrive automatically from this repository.
+### Under the hood
+- No external fonts or assets; uses the system font stack.
+- Structural CSS lives in stylesheets and is driven by CSS variables; PHP injects only the per site values.
+- Self updates from GitHub through the Plugin Update Checker library.
+- Keeps the `amw_login_options` option name across versions, so upgrades never lose a site's configuration.
 
-## ⚙️ Configuration
+## Requirements
 
-Everything is set from **Settings → AMW Login**:
+- WordPress 5.5 or newer
+- PHP 7.0 or newer
 
-- **Logo**: upload your own or let it use the site's logo.
-- **Background image**: image, layout (left, center, right), blur, and overlay color and intensity.
-- **Color palette** and **interface** (radius, hide links).
-- **Legal links** in the footer.
+## Installation
 
-The logo is resolved in this order: plugin logo, Site Identity logo, Divi logo and, as a last resort, an inline fallback SVG that takes the theme color.
+1. Download the latest release as a ZIP, or clone this repository.
+2. Upload it via Plugins > Add New > Upload Plugin, or copy the folder into `wp-content/plugins/`.
+3. Activate the plugin, then open Settings > AMW Login.
 
-## 🚀 Publishing an update (maintenance)
+Once installed, the plugin keeps itself up to date from this repository.
 
-The plugin checks this repo's releases via [Plugin Update Checker](https://github.com/YahnisElsts/plugin-update-checker). To ship a new version:
+## Configuration
 
-1. Bump the `Version:` number in the main plugin file header.
-2. Commit and push.
-3. Create a **release** with the matching tag (for example, `v1.0.1`).
+Everything lives under Settings > AMW Login, organised into tabs:
 
-Sites running the plugin will detect the new version and offer the update from their dashboard.
+- **Design**: logo, colour palette, login box, and interface options.
+- **Background**: form position, background type, and the side panel.
+- **Content**: heading text, legal links, and extra CSS.
+- **Security**: the honeypot toggle and what the plugin does on the security side.
+- **Tools**: export and import settings.
 
-## 📄 License
+Changes apply to the login screen. Open it to preview.
 
-[GPL-2.0-or-later](LICENSE). Bundles the Plugin Update Checker library by Yahnis Elsts, under its own compatible license.
+## For developers
 
-## 👤 Author
+- `amw_login_honeypot_enabled` (filter): force the honeypot on or off site wide, overriding the setting. Example: `add_filter( 'amw_login_honeypot_enabled', '__return_false' );`
+- All settings are stored in a single option, `amw_login_options`.
+- Uninstalling removes that option and leaves nothing else behind.
 
-Álvaro Márquez Díaz · [alvaromarquezweb.com](https://alvaromarquezweb.com)
+## Translations
+
+Source strings are in English. A Spanish (es_ES) translation is included under `languages/`. To translate into another language, copy `languages/amw-simple-login.pot`, translate it with a tool such as Poedit, and save the resulting `.po` and `.mo` as `amw-simple-login-{locale}` in the same folder.
+
+## Support
+
+This plugin is free and open source. If it saves you time, you can [buy me a coffee](https://buymeacoffee.com/alvaromarquezweb).
+
+## License
+
+GPL-2.0-or-later. See [LICENSE](LICENSE).
+
+## Author
+
+Álvaro Márquez Díaz, [alvaromarquezweb.com](https://alvaromarquezweb.com)
