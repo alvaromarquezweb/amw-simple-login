@@ -1,5 +1,5 @@
 /* ─────────────────────────────────────────
-   AMW Simple Login — v1.2.0
+   AMW Simple Login — v1.1.0
    alvaromarquezweb.com
 
    FONTS: system-ui, no external load.
@@ -383,12 +383,17 @@ body.login.amw-has-image::before {
     top: 0;
     bottom: 0;
     z-index: -2;
-    background: var(--amw-overlay), var(--amw-bg-image);
+    /* Overlay over the image. Falls back to no tint if the variable is absent. */
+    background: var(--amw-overlay, linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0))), var(--amw-bg-image);
     background-size: cover;
     background-position: center;
     filter: blur(var(--amw-blur, 0px));
     /* Slight oversize so the blur does not leave a halo at the edges. */
     transform: scale(1.06);
+}
+/* Overlay set to None: paint the image only, no overlay layer at all. */
+body.login.amw-has-image.amw-ov-none::before {
+    background: var(--amw-bg-image);
 }
 body.login.amw-pos-left.amw-has-image::before   { left: var(--amw-col); right: 0; }
 body.login.amw-pos-right.amw-has-image::before  { left: 0; right: var(--amw-col); }
