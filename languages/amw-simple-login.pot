@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AMW Simple Login 1.3.0\n"
 "Report-Msgid-Bugs-To: https://alvaromarquezweb.com\n"
-"POT-Creation-Date: 2026-07-29 14:07+0000\n"
+"POT-Creation-Date: 2026-07-29 17:11+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -243,6 +243,9 @@ msgid "From 0 (no blur) to 20. Combined with the overlay it gives a frosted-glas
 msgstr ""
 
 msgid "Overlay"
+msgstr ""
+
+msgid "None"
 msgstr ""
 
 msgid "Overlay opacity"
