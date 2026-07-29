@@ -400,7 +400,7 @@ function amw_login_settings_page() {
                     <th scope="row"><?php esc_html_e( 'Overlay', 'amw-simple-login' ); ?></th>
                     <td>
                         <?php
-                        $ov_types = [ 'solid' => __( 'Solid color', 'amw-simple-login' ), 'gradient' => __( 'Gradient', 'amw-simple-login' ) ];
+                        $ov_types = [ 'none' => __( 'None', 'amw-simple-login' ), 'solid' => __( 'Solid color', 'amw-simple-login' ), 'gradient' => __( 'Gradient', 'amw-simple-login' ) ];
                         foreach ( $ov_types as $val => $label ) : ?>
                             <label style="display:inline-block; margin-right:16px;">
                                 <input type="radio" class="amw-ov-type" name="amw_login_options[ov_type]" value="<?php echo esc_attr( $val ); ?>" <?php checked( $opts['ov_type'], $val ); ?>>
@@ -409,7 +409,7 @@ function amw_login_settings_page() {
                         <?php endforeach; ?>
                     </td>
                 </tr>
-                <tr class="amw-bg-image">
+                <tr class="amw-bg-image amw-ov-on">
                     <th scope="row"><label for="amw_ov_color1"><?php esc_html_e( 'Color / start', 'amw-simple-login' ); ?></label></th>
                     <td>
                         <input type="text" class="amw-color-field" id="amw_ov_color1" name="amw_login_options[ov_color1]" value="<?php echo esc_attr( $opts['ov_color1'] ); ?>">
@@ -424,7 +424,7 @@ function amw_login_settings_page() {
                             <input type="number" name="amw_login_options[ov_angle]" min="0" max="360" step="1" value="<?php echo esc_attr( (int) $opts['ov_angle'] ); ?>" style="width:80px;">&deg;</label>
                     </td>
                 </tr>
-                <tr class="amw-bg-image">
+                <tr class="amw-bg-image amw-ov-on">
                     <th scope="row"><label for="amw_ov_opacity"><?php esc_html_e( 'Overlay opacity', 'amw-simple-login' ); ?></label></th>
                     <td>
                         <input type="range" id="amw_ov_opacity" name="amw_login_options[ov_opacity]" min="0" max="100" step="1" value="<?php echo esc_attr( (int) $opts['ov_opacity'] ); ?>" style="vertical-align:middle; width:220px;" oninput="document.getElementById('amw_ov_val').textContent = this.value + ' %';">
