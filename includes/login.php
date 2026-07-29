@@ -232,13 +232,16 @@ function amw_login_dynamic_styles() {
 
     // Overlay over the image (only emitted in image mode).
     if ( $has_image ) {
-        $ov_type = ( 'gradient' === $opts['ov_type'] ) ? 'gradient' : 'solid';
+        $ov_type = in_array( $opts['ov_type'], [ 'none', 'solid', 'gradient' ], true ) ? $opts['ov_type'] : 'solid';
         $ov1     = amw_login_css_color( $opts, 'ov_color1' );
         $ov2     = amw_login_css_color( $opts, 'ov_color2' );
         $ovang   = max( 0, min( 360, (int) $opts['ov_angle'] ) );
         $ovop1   = max( 0, min( 100, (int) $opts['ov_opacity'] ) ) / 100;
         $ovop2   = max( 0, min( 100, (int) $opts['ov_opacity2'] ) ) / 100;
-        if ( 'gradient' === $ov_type ) {
+        if ( 'none' === $ov_type ) {
+            // No overlay: a fully transparent layer so the image shows untinted.
+            $overlay = 'linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0))';
+        } elseif ( 'gradient' === $ov_type ) {
             $overlay = sprintf(
                 'linear-gradient(%ddeg, %s, %s)',
                 $ovang,
