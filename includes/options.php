@@ -42,7 +42,7 @@ function amw_login_defaults() {
         'bg_angle'               => 135,        // gradient angle 0-360
         'blur'                   => 0,          // image blur in px (0-20), image only
         // Overlay over the image (only when bg_type is image).
-        'ov_type'                => 'solid',    // solid | gradient
+        'ov_type'                => 'solid',    // none | solid | gradient
         'ov_color1'              => '#05070d',
         'ov_color2'              => '#0a1830',
         'ov_angle'               => 135,
@@ -268,7 +268,7 @@ function amw_login_sanitize_options( $input ) {
     $output['bg_type'] = in_array( $bg_type, [ 'solid', 'gradient', 'image' ], true ) ? $bg_type : $defaults['bg_type'];
 
     $ov_type           = isset( $input['ov_type'] ) ? sanitize_key( $input['ov_type'] ) : '';
-    $output['ov_type'] = in_array( $ov_type, [ 'solid', 'gradient' ], true ) ? $ov_type : $defaults['ov_type'];
+    $output['ov_type'] = in_array( $ov_type, [ 'none', 'solid', 'gradient' ], true ) ? $ov_type : $defaults['ov_type'];
 
     foreach ( [ 'bg_color1', 'bg_color2', 'ov_color1', 'ov_color2', 'panel_color', 'shadow_color', 'focus_color' ] as $key ) {
         $val            = isset( $input[ $key ] ) ? sanitize_hex_color( $input[ $key ] ) : '';
