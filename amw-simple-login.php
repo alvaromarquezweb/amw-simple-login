@@ -3,7 +3,7 @@
  * Plugin Name: AMW Simple Login
  * Plugin URI:  https://alvaromarquezweb.com
  * Description: Customises the WordPress login screen. Configurable from Settings → AMW Login.
- * Version:     1.3.0
+ * Version:     1.3.1
  * Author:      Álvaro Márquez Díaz
  * Author URI:  https://alvaromarquezweb.com
  * License:     GPL-2.0-or-later
