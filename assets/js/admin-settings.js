@@ -136,11 +136,14 @@
 		$( '#amw-export-copy' ).on( 'click', function( e ) {
 			e.preventDefault();
 			var ta = document.getElementById( 'amw_export_json' );
-			if ( navigator.clipboard && navigator.clipboard.writeText ) {
-				navigator.clipboard.writeText( ta.value );
-			} else {
+			function legacyCopy() {
 				ta.select();
 				document.execCommand( 'copy' );
+			}
+			if ( navigator.clipboard && navigator.clipboard.writeText ) {
+				navigator.clipboard.writeText( ta.value ).catch( legacyCopy );
+			} else {
+				legacyCopy();
 			}
 		} );
 		$( '#amw-export-download' ).on( 'click', function( e ) {
