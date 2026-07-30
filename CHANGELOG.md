@@ -4,6 +4,11 @@ All notable changes to this project are documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/), and this project follows [Semantic Versioning](https://semver.org/).
 
+## [1.3.1] - 2026-07-29
+
+### Fixed
+- The export "Copy" button now falls back to the legacy copy method if the modern clipboard write is rejected, instead of failing silently.
+
 ## [1.3.0] - 2026-07-29
 
 ### Added
